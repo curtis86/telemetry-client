@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# telemetry-client
+
+# BASH MODES
+set -u            # Do not remove this mode
+set -o pipefail
+
+# CONSTANTS
+readonly HOME_DIR="$( cd "$( dirname $0 )" ; pwd )"
+readonly INCLUDES_DIR="${HOME_DIR}/includes"
+
+# INCLUDES
+source "${INCLUDES_DIR}/bp.sh"
+source "${INCLUDES_DIR}/telemetry-client_vars.sh"
+source "${INCLUDES_DIR}/telemetry-client_functions.sh"
+
+# MAIN
+main() {
+  tc::setup
+  tc::run_pipe
+}
+
+main $@
